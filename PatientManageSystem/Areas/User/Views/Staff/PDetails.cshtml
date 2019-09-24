@@ -1,0 +1,131 @@
+﻿@model PatientManageSystem.Models.PatientManage
+
+@{
+    ViewBag.Title = "PDetails";
+    Layout = "~/Areas/User/Views/Shared/_User.cshtml";
+}
+
+<div class="container mt-0">
+    <div class="row breadcrumb-bar">
+        <div class="col-md-6">
+            <h3 class="block-title">Details Patient</h3>
+        </div>
+        <div class="col-md-6">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="index-2.html">
+                        <span class="ti-home"></span>
+                    </a>
+                </li>
+                <li class="breadcrumb-item">Patient</li>
+                <li class="breadcrumb-item active">Details Patient</li>
+            </ol>
+        </div>
+    </div>
+
+    <div>
+
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Pname)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Pname)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Address1)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Address1)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Address2)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Address2)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Gender)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Gender)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DOB)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DOB)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PContactNumber)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PContactNumber)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PEmail)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PEmail)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Cretedby)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Cretedby)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Modifiedby)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Modifiedby)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Creteddate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Creteddate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Modifieddate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Modifieddate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CityMaster.CityName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CityMaster.CityName)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "PEdit", new { id = Model.Pid }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</div>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="af3cb77eaa6249f9a2ad1c3c81cb533f" Name="Diagram1">
+        <EntityTypeShape EntityType="PMSModel.SuperAdmin" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PMSModel.StaffManage" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="PMSModel.DoctorManage" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="PMSModel.CityMaster" Width="1.5" PointX="9.875" PointY="1.875" />
+        <EntityTypeShape EntityType="PMSModel.CountryMaster" Width="1.5" PointX="5.375" PointY="2.125" />
+        <EntityTypeShape EntityType="PMSModel.PatientManage" Width="1.5" PointX="12.125" PointY="1" />
+        <EntityTypeShape EntityType="PMSModel.StateMaster" Width="1.5" PointX="7.625" PointY="1.875" />
+        <AssociationConnector Association="PMSModel.FK__CityMaste__RefSt__6383C8BA" />
+        <AssociationConnector Association="PMSModel.FK__PatientMa__RefCi__6D0D32F4" />
+        <AssociationConnector Association="PMSModel.FK__StateMast__RefCo__5FB337D6" />
+        <EntityTypeShape EntityType="PMSModel.AppointmentManage" Width="1.5" PointX="14.375" PointY="2.375" />
+        <AssociationConnector Association="PMSModel.FK__Appointme__RefDi__6FE99F9F" />
+        <AssociationConnector Association="PMSModel.FK__Appointme__RefPi__6EF57B66" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

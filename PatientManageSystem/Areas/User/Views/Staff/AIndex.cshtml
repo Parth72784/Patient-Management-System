@@ -1,0 +1,162 @@
+﻿@model IEnumerable<PatientManageSystem.Models.AppointmentManage>
+
+@{
+    ViewBag.Title = "AIndex";
+    Layout = "~/Areas/User/Views/Shared/_User.cshtml";
+}
+
+<h2>Index</h2>
+<link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $(".datepicker").datepicker({
+            dateFormat: "dd/mm/yy",
+            changeMonth: true,
+            changeYear: true,
+            yearRange: "1995:2022",
+            showOn: "both",
+            buttonText: "Select"
+        });
+
+    });
+
+</script>
+<div class="container mt-0">
+    <div class="row breadcrumb-bar">
+        <div class="col-md-6">
+            <h3 class="block-title">Index Appointment</h3>
+        </div>
+        <div class="col-md-6">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="index-2.html">
+                        <span class="ti-home"></span>
+                    </a>
+                </li>
+                <li class="breadcrumb-item">Appoinments</li>
+                <li class="breadcrumb-item active">Index Appointment</li>
+            </ol>
+        </div>
+    </div>
+    <div>
+        <form method="get" action="@Url.Action("AIndex","Staff")" class="form-control">
+            <div class="row">
+                <div class="col-md-5"><input type="text" class="datepicker" id="AppointmentStartDate" name="AppointmentStartDate" /></div>
+                <div class=" col-md-5"><input type="text" class="datepicker" id="AppointmentEndDate" name="AppointmentEndDate" /></div>
+                <div class="col-md-2">
+                    <input type="submit" value="Search" id="search" class="btn btn-primary" name="search" />
+                </div>
+            </div>
+
+        </form>
+        @using (Html.BeginForm("Export", "Staff", FormMethod.Post))
+        {
+            <input type="hidden" name="GridHtml" />
+            <input type="submit" id="btnSubmit" value="Export" />
+        }
+        <script type="text/javascript">
+            $(function () {
+                $("#btnSubmit").click(function () {
+                    $("input[name='GridHtml']").val($("#Grid").html());
+                });
+            });
+        </script>
+        <p>
+            @Html.ActionLink("Create New", "PCreate")
+        </p>
+        <div id="Grid">
+            <table class="table">
+                <tr>
+                    <th>
+                        A.S. Date
+                    </th>
+                    <th>
+                        A.E. Date
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Purpose)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Status)
+                    </th>
+                    <th>
+                        DOC
+                    </th>
+                    <th>
+                        C By
+                    </th>
+                    <th>
+                        M By
+                    </th>
+                    <th>
+                        C Date
+                    </th>
+                    <th>
+                        M Date
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DoctorManage.DrName)
+                    </th>
+                    <th>
+                        Patient Name
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @*@Html.DisplayFor(modelItem => item.AppointmentStartDate.Date)*@
+                            @item.AppointmentStartDate.ToShortDateString()
+                        </td>
+                        <td>
+                            @*@Html.DisplayFor(modelItem => item.AppointmentEndDat)*@
+                            @{
+                                var date = DateTime.Parse(item.AppointmentEndDate.ToString());
+                                <p>@date.ToShortDateString()</p>
+                            }
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Purpose)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Status)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DocumentUpload)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Cretedby)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Modifiedby)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Creteddate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Modifieddate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DoctorManage.DrName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PatientManage.Pname)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "AEdit", new { id = item.Aid }) |
+                            @Html.ActionLink("Details", "ADetails", new { id = item.Aid }) 
+                    
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,131 @@
+﻿@model PatientManageSystem.Models.AppointmentManage
+
+@{
+    ViewBag.Title = "ACreate";
+    Layout = "~/Areas/User/Views/Shared/_User.cshtml";
+}
+
+<link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $(".datepicker").datepicker({
+            dateFormat: "dd/mm/yy",
+            changeMonth: true,
+            changeYear: true,
+            yearRange: "1995:2022",
+            showOn: "both",
+            buttonText: "Select"
+        });
+
+    });
+</script>
+<div class="container mt-0">
+    <div class="row breadcrumb-bar">
+        <div class="col-md-6">
+            <h3 class="block-title">Add Appointment</h3>
+        </div>
+        <div class="col-md-6">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="index-2.html">
+                        <span class="ti-home"></span>
+                    </a>
+                </li>
+                <li class="breadcrumb-item">Appoinments</li>
+                <li class="breadcrumb-item active">Add Appointments</li>
+            </ol>
+        </div>
+    </div>
+
+    @using (Html.BeginForm("ACreate", "Staff", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="module">
+            <div class="form-horizontal">
+                <div class="module-body">
+                    <h4>AppointmentManage</h4>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.RefPid, "Patiant Name", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("RefPid", null, "Select Patient", htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.RefPid, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.RefDid, "Doctor Name", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("RefDid", null, "Select Doctor", htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.RefDid, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.AppointmentStartDate, "A.S.Date", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.AppointmentStartDate, new { htmlAttributes = new { @class = "datepicker" } })
+                            @Html.ValidationMessageFor(model => model.AppointmentStartDate, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.AppointmentEndDate, "A.E.Date", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.AppointmentEndDate, new { htmlAttributes = new { @class = "datepicker" } })
+                            @Html.ValidationMessageFor(model => model.AppointmentEndDate, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Purpose, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextAreaFor(model => model.Purpose, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Purpose, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <select class="form-control" id="Status" name="Status">
+                                <option>Select Status</option>
+                                <option>New</option>
+                                <option>Old</option>
+                                <option>Canceld</option>
+                            </select>
+                            @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DocumentUpload, "DOC", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <input type="file" id="DocumentUpload" name="DocumentUpload" />
+                            @Html.ValidationMessageFor(model => model.DocumentUpload, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Create" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "AIndex")
+    </div>
+</div>
+    

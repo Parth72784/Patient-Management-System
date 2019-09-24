@@ -1,0 +1,542 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="PMSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AppointmentManage">
+          <Key>
+            <PropertyRef Name="Aid" />
+          </Key>
+          <Property Name="RefPid" Type="int" Nullable="false" />
+          <Property Name="RefDid" Type="int" Nullable="false" />
+          <Property Name="AppointmentStartDate" Type="date" Nullable="false" />
+          <Property Name="AppointmentEndDate" Type="date" />
+          <Property Name="Purpose" Type="varchar(max)" Nullable="false" />
+          <Property Name="Status" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DocumentUpload" Type="varchar(max)" />
+          <Property Name="Cretedby" Type="varchar" MaxLength="50" />
+          <Property Name="Modifiedby" Type="varchar" MaxLength="50" />
+          <Property Name="Creteddate" Type="date" />
+          <Property Name="Modifieddate" Type="date" />
+          <Property Name="Aid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CityMaster">
+          <Key>
+            <PropertyRef Name="CityId" />
+          </Key>
+          <Property Name="CityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CityName" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="RefStateId" Type="int" />
+        </EntityType>
+        <EntityType Name="CountryMaster">
+          <Key>
+            <PropertyRef Name="CountryId" />
+          </Key>
+          <Property Name="CountryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CountryName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DoctorManage">
+          <Key>
+            <PropertyRef Name="DrId" />
+          </Key>
+          <Property Name="DrId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DrName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DrPassword" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Specialzaition" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DrEmail" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DrContactNumber" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="DrExperience" Type="decimal" Precision="10" Scale="1" Nullable="false" />
+          <Property Name="DrGender" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="Cretedby" Type="varchar" MaxLength="50" />
+          <Property Name="Modifiedby" Type="varchar" MaxLength="50" />
+          <Property Name="Creteddate" Type="date" />
+          <Property Name="Modifieddate" Type="date" />
+        </EntityType>
+        <EntityType Name="PatientManage">
+          <Key>
+            <PropertyRef Name="Pid" />
+          </Key>
+          <Property Name="Pid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Pname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address1" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address2" Type="varchar" MaxLength="50" />
+          <Property Name="Gender" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DOB" Type="date" Nullable="false" />
+          <Property Name="PContactNumber" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="PEmail" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cretedby" Type="varchar" MaxLength="50" />
+          <Property Name="Modifiedby" Type="varchar" MaxLength="50" />
+          <Property Name="Creteddate" Type="date" />
+          <Property Name="Modifieddate" Type="date" />
+          <Property Name="RefCityid" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StaffManage">
+          <Key>
+            <PropertyRef Name="StaffId" />
+          </Key>
+          <Property Name="StaffId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StaffName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="StaffPassword" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="StaffEmail" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="StaffContactNumber" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="StaffDesignation" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="StaffExperience" Type="decimal" Precision="10" Scale="1" Nullable="false" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="Cretedby" Type="varchar" MaxLength="50" />
+          <Property Name="Modifiedby" Type="varchar" MaxLength="50" />
+          <Property Name="Creteddate" Type="date" />
+          <Property Name="Modifieddate" Type="date" />
+        </EntityType>
+        <EntityType Name="StateMaster">
+          <Key>
+            <PropertyRef Name="StateId" />
+          </Key>
+          <Property Name="StateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StateName" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="RefCountryId" Type="int" />
+        </EntityType>
+        <EntityType Name="SuperAdmin">
+          <Key>
+            <PropertyRef Name="AdminId" />
+          </Key>
+          <Property Name="AdminId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AdminName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="AdminPassword" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Appointme__RefDi__6FE99F9F">
+          <End Role="DoctorManage" Type="Self.DoctorManage" Multiplicity="1" />
+          <End Role="AppointmentManage" Type="Self.AppointmentManage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DoctorManage">
+              <PropertyRef Name="DrId" />
+            </Principal>
+            <Dependent Role="AppointmentManage">
+              <PropertyRef Name="RefDid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Appointme__RefPi__6EF57B66">
+          <End Role="PatientManage" Type="Self.PatientManage" Multiplicity="1" />
+          <End Role="AppointmentManage" Type="Self.AppointmentManage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PatientManage">
+              <PropertyRef Name="Pid" />
+            </Principal>
+            <Dependent Role="AppointmentManage">
+              <PropertyRef Name="RefPid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CityMaste__RefSt__6383C8BA">
+          <End Role="StateMaster" Type="Self.StateMaster" Multiplicity="0..1" />
+          <End Role="CityMaster" Type="Self.CityMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StateMaster">
+              <PropertyRef Name="StateId" />
+            </Principal>
+            <Dependent Role="CityMaster">
+              <PropertyRef Name="RefStateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PatientMa__RefCi__6D0D32F4">
+          <End Role="CityMaster" Type="Self.CityMaster" Multiplicity="1" />
+          <End Role="PatientManage" Type="Self.PatientManage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CityMaster">
+              <PropertyRef Name="CityId" />
+            </Principal>
+            <Dependent Role="PatientManage">
+              <PropertyRef Name="RefCityid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StateMast__RefCo__5FB337D6">
+          <End Role="CountryMaster" Type="Self.CountryMaster" Multiplicity="0..1" />
+          <End Role="StateMaster" Type="Self.StateMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CountryMaster">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="StateMaster">
+              <PropertyRef Name="RefCountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PMSModelStoreContainer">
+          <EntitySet Name="AppointmentManage" EntityType="Self.AppointmentManage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CityMaster" EntityType="Self.CityMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CountryMaster" EntityType="Self.CountryMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DoctorManage" EntityType="Self.DoctorManage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PatientManage" EntityType="Self.PatientManage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StaffManage" EntityType="Self.StaffManage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StateMaster" EntityType="Self.StateMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SuperAdmin" EntityType="Self.SuperAdmin" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Appointme__RefDi__6FE99F9F" Association="Self.FK__Appointme__RefDi__6FE99F9F">
+            <End Role="DoctorManage" EntitySet="DoctorManage" />
+            <End Role="AppointmentManage" EntitySet="AppointmentManage" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Appointme__RefPi__6EF57B66" Association="Self.FK__Appointme__RefPi__6EF57B66">
+            <End Role="PatientManage" EntitySet="PatientManage" />
+            <End Role="AppointmentManage" EntitySet="AppointmentManage" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CityMaste__RefSt__6383C8BA" Association="Self.FK__CityMaste__RefSt__6383C8BA">
+            <End Role="StateMaster" EntitySet="StateMaster" />
+            <End Role="CityMaster" EntitySet="CityMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PatientMa__RefCi__6D0D32F4" Association="Self.FK__PatientMa__RefCi__6D0D32F4">
+            <End Role="CityMaster" EntitySet="CityMaster" />
+            <End Role="PatientManage" EntitySet="PatientManage" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StateMast__RefCo__5FB337D6" Association="Self.FK__StateMast__RefCo__5FB337D6">
+            <End Role="CountryMaster" EntitySet="CountryMaster" />
+            <End Role="StateMaster" EntitySet="StateMaster" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PMSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="SuperAdmin">
+          <Key>
+            <PropertyRef Name="AdminId" />
+          </Key>
+          <Property Name="AdminId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdminName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AdminPassword" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="PMSEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="SuperAdmins" EntityType="Self.SuperAdmin" />
+          <EntitySet Name="StaffManages" EntityType="PMSModel.StaffManage" />
+          <EntitySet Name="DoctorManages" EntityType="PMSModel.DoctorManage" />
+          <EntitySet Name="CityMasters" EntityType="PMSModel.CityMaster" />
+          <EntitySet Name="CountryMasters" EntityType="PMSModel.CountryMaster" />
+          <EntitySet Name="PatientManages" EntityType="PMSModel.PatientManage" />
+          <EntitySet Name="StateMasters" EntityType="PMSModel.StateMaster" />
+          <AssociationSet Name="FK__CityMaste__RefSt__6383C8BA" Association="PMSModel.FK__CityMaste__RefSt__6383C8BA">
+            <End Role="StateMaster" EntitySet="StateMasters" />
+            <End Role="CityMaster" EntitySet="CityMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PatientMa__RefCi__6D0D32F4" Association="PMSModel.FK__PatientMa__RefCi__6D0D32F4">
+            <End Role="CityMaster" EntitySet="CityMasters" />
+            <End Role="PatientManage" EntitySet="PatientManages" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StateMast__RefCo__5FB337D6" Association="PMSModel.FK__StateMast__RefCo__5FB337D6">
+            <End Role="CountryMaster" EntitySet="CountryMasters" />
+            <End Role="StateMaster" EntitySet="StateMasters" />
+          </AssociationSet>
+          <EntitySet Name="AppointmentManages" EntityType="PMSModel.AppointmentManage" />
+          <AssociationSet Name="FK__Appointme__RefDi__6FE99F9F" Association="PMSModel.FK__Appointme__RefDi__6FE99F9F">
+            <End Role="DoctorManage" EntitySet="DoctorManages" />
+            <End Role="AppointmentManage" EntitySet="AppointmentManages" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Appointme__RefPi__6EF57B66" Association="PMSModel.FK__Appointme__RefPi__6EF57B66">
+            <End Role="PatientManage" EntitySet="PatientManages" />
+            <End Role="AppointmentManage" EntitySet="AppointmentManages" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="StaffManage">
+          <Key>
+            <PropertyRef Name="StaffId" />
+          </Key>
+          <Property Name="StaffId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StaffName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StaffPassword" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="StaffEmail" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StaffContactNumber" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="StaffDesignation" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="StaffExperience" Type="Decimal" Nullable="false" Precision="10" Scale="1" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="Cretedby" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Modifiedby" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Creteddate" Type="DateTime" Precision="0" />
+          <Property Name="Modifieddate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="DoctorManage">
+          <Key>
+            <PropertyRef Name="DrId" />
+          </Key>
+          <Property Name="DrId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DrName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DrPassword" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Specialzaition" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DrEmail" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DrContactNumber" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="DrExperience" Type="Decimal" Nullable="false" Precision="10" Scale="1" />
+          <Property Name="DrGender" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="Cretedby" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Modifiedby" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Creteddate" Type="DateTime" Precision="0" />
+          <Property Name="Modifieddate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="AppointmentManages" Relationship="PMSModel.FK__Appointme__RefDi__6FE99F9F" FromRole="DoctorManage" ToRole="AppointmentManage" />
+        </EntityType>
+        <EntityType Name="CityMaster">
+          <Key>
+            <PropertyRef Name="CityId" />
+          </Key>
+          <Property Name="CityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CityName" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="RefStateId" Type="Int32" />
+          <NavigationProperty Name="StateMaster" Relationship="PMSModel.FK__CityMaste__RefSt__6383C8BA" FromRole="CityMaster" ToRole="StateMaster" />
+          <NavigationProperty Name="PatientManages" Relationship="PMSModel.FK__PatientMa__RefCi__6D0D32F4" FromRole="CityMaster" ToRole="PatientManage" />
+        </EntityType>
+        <EntityType Name="CountryMaster">
+          <Key>
+            <PropertyRef Name="CountryId" />
+          </Key>
+          <Property Name="CountryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountryName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="StateMasters" Relationship="PMSModel.FK__StateMast__RefCo__5FB337D6" FromRole="CountryMaster" ToRole="StateMaster" />
+        </EntityType>
+        <EntityType Name="PatientManage">
+          <Key>
+            <PropertyRef Name="Pid" />
+          </Key>
+          <Property Name="Pid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Pname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DOB" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PContactNumber" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PEmail" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Cretedby" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Modifiedby" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Creteddate" Type="DateTime" Precision="0" />
+          <Property Name="Modifieddate" Type="DateTime" Precision="0" />
+          <Property Name="RefCityid" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CityMaster" Relationship="PMSModel.FK__PatientMa__RefCi__6D0D32F4" FromRole="PatientManage" ToRole="CityMaster" />
+          <NavigationProperty Name="AppointmentManages" Relationship="PMSModel.FK__Appointme__RefPi__6EF57B66" FromRole="PatientManage" ToRole="AppointmentManage" />
+        </EntityType>
+        <EntityType Name="StateMaster">
+          <Key>
+            <PropertyRef Name="StateId" />
+          </Key>
+          <Property Name="StateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StateName" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="RefCountryId" Type="Int32" />
+          <NavigationProperty Name="CityMasters" Relationship="PMSModel.FK__CityMaste__RefSt__6383C8BA" FromRole="StateMaster" ToRole="CityMaster" />
+          <NavigationProperty Name="CountryMaster" Relationship="PMSModel.FK__StateMast__RefCo__5FB337D6" FromRole="StateMaster" ToRole="CountryMaster" />
+        </EntityType>
+        <Association Name="FK__CityMaste__RefSt__6383C8BA">
+          <End Type="PMSModel.StateMaster" Role="StateMaster" Multiplicity="0..1" />
+          <End Type="PMSModel.CityMaster" Role="CityMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StateMaster">
+              <PropertyRef Name="StateId" />
+            </Principal>
+            <Dependent Role="CityMaster">
+              <PropertyRef Name="RefStateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PatientMa__RefCi__6D0D32F4">
+          <End Type="PMSModel.CityMaster" Role="CityMaster" Multiplicity="1" />
+          <End Type="PMSModel.PatientManage" Role="PatientManage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CityMaster">
+              <PropertyRef Name="CityId" />
+            </Principal>
+            <Dependent Role="PatientManage">
+              <PropertyRef Name="RefCityid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StateMast__RefCo__5FB337D6">
+          <End Type="PMSModel.CountryMaster" Role="CountryMaster" Multiplicity="0..1" />
+          <End Type="PMSModel.StateMaster" Role="StateMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CountryMaster">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="StateMaster">
+              <PropertyRef Name="RefCountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="AppointmentManage">
+          <Key>
+            <PropertyRef Name="Aid" />
+          </Key>
+          <Property Name="RefPid" Type="Int32" Nullable="false" />
+          <Property Name="RefDid" Type="Int32" Nullable="false" />
+          <Property Name="AppointmentStartDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="AppointmentEndDate" Type="DateTime" Precision="0" />
+          <Property Name="Purpose" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DocumentUpload" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Cretedby" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Modifiedby" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Creteddate" Type="DateTime" Precision="0" />
+          <Property Name="Modifieddate" Type="DateTime" Precision="0" />
+          <Property Name="Aid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="DoctorManage" Relationship="PMSModel.FK__Appointme__RefDi__6FE99F9F" FromRole="AppointmentManage" ToRole="DoctorManage" />
+          <NavigationProperty Name="PatientManage" Relationship="PMSModel.FK__Appointme__RefPi__6EF57B66" FromRole="AppointmentManage" ToRole="PatientManage" />
+        </EntityType>
+        <Association Name="FK__Appointme__RefDi__6FE99F9F">
+          <End Type="PMSModel.DoctorManage" Role="DoctorManage" Multiplicity="1" />
+          <End Type="PMSModel.AppointmentManage" Role="AppointmentManage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DoctorManage">
+              <PropertyRef Name="DrId" />
+            </Principal>
+            <Dependent Role="AppointmentManage">
+              <PropertyRef Name="RefDid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Appointme__RefPi__6EF57B66">
+          <End Type="PMSModel.PatientManage" Role="PatientManage" Multiplicity="1" />
+          <End Type="PMSModel.AppointmentManage" Role="AppointmentManage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PatientManage">
+              <PropertyRef Name="Pid" />
+            </Principal>
+            <Dependent Role="AppointmentManage">
+              <PropertyRef Name="RefPid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PMSModelStoreContainer" CdmEntityContainer="PMSEntities">
+          <EntitySetMapping Name="SuperAdmins">
+            <EntityTypeMapping TypeName="PMSModel.SuperAdmin">
+              <MappingFragment StoreEntitySet="SuperAdmin">
+                <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+                <ScalarProperty Name="AdminName" ColumnName="AdminName" />
+                <ScalarProperty Name="AdminPassword" ColumnName="AdminPassword" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StaffManages">
+            <EntityTypeMapping TypeName="PMSModel.StaffManage">
+              <MappingFragment StoreEntitySet="StaffManage">
+                <ScalarProperty Name="Modifieddate" ColumnName="Modifieddate" />
+                <ScalarProperty Name="Creteddate" ColumnName="Creteddate" />
+                <ScalarProperty Name="Modifiedby" ColumnName="Modifiedby" />
+                <ScalarProperty Name="Cretedby" ColumnName="Cretedby" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="StaffExperience" ColumnName="StaffExperience" />
+                <ScalarProperty Name="StaffDesignation" ColumnName="StaffDesignation" />
+                <ScalarProperty Name="StaffContactNumber" ColumnName="StaffContactNumber" />
+                <ScalarProperty Name="StaffEmail" ColumnName="StaffEmail" />
+                <ScalarProperty Name="StaffPassword" ColumnName="StaffPassword" />
+                <ScalarProperty Name="StaffName" ColumnName="StaffName" />
+                <ScalarProperty Name="StaffId" ColumnName="StaffId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DoctorManages">
+            <EntityTypeMapping TypeName="PMSModel.DoctorManage">
+              <MappingFragment StoreEntitySet="DoctorManage">
+                <ScalarProperty Name="Modifieddate" ColumnName="Modifieddate" />
+                <ScalarProperty Name="Creteddate" ColumnName="Creteddate" />
+                <ScalarProperty Name="Modifiedby" ColumnName="Modifiedby" />
+                <ScalarProperty Name="Cretedby" ColumnName="Cretedby" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="DrGender" ColumnName="DrGender" />
+                <ScalarProperty Name="DrExperience" ColumnName="DrExperience" />
+                <ScalarProperty Name="DrContactNumber" ColumnName="DrContactNumber" />
+                <ScalarProperty Name="DrEmail" ColumnName="DrEmail" />
+                <ScalarProperty Name="Specialzaition" ColumnName="Specialzaition" />
+                <ScalarProperty Name="DrPassword" ColumnName="DrPassword" />
+                <ScalarProperty Name="DrName" ColumnName="DrName" />
+                <ScalarProperty Name="DrId" ColumnName="DrId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CityMasters">
+            <EntityTypeMapping TypeName="PMSModel.CityMaster">
+              <MappingFragment StoreEntitySet="CityMaster">
+                <ScalarProperty Name="RefStateId" ColumnName="RefStateId" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CountryMasters">
+            <EntityTypeMapping TypeName="PMSModel.CountryMaster">
+              <MappingFragment StoreEntitySet="CountryMaster">
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PatientManages">
+            <EntityTypeMapping TypeName="PMSModel.PatientManage">
+              <MappingFragment StoreEntitySet="PatientManage">
+                <ScalarProperty Name="RefCityid" ColumnName="RefCityid" />
+                <ScalarProperty Name="Modifieddate" ColumnName="Modifieddate" />
+                <ScalarProperty Name="Creteddate" ColumnName="Creteddate" />
+                <ScalarProperty Name="Modifiedby" ColumnName="Modifiedby" />
+                <ScalarProperty Name="Cretedby" ColumnName="Cretedby" />
+                <ScalarProperty Name="PEmail" ColumnName="PEmail" />
+                <ScalarProperty Name="PContactNumber" ColumnName="PContactNumber" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="Pname" ColumnName="Pname" />
+                <ScalarProperty Name="Pid" ColumnName="Pid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StateMasters">
+            <EntityTypeMapping TypeName="PMSModel.StateMaster">
+              <MappingFragment StoreEntitySet="StateMaster">
+                <ScalarProperty Name="RefCountryId" ColumnName="RefCountryId" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AppointmentManages">
+            <EntityTypeMapping TypeName="PMSModel.AppointmentManage">
+              <MappingFragment StoreEntitySet="AppointmentManage">
+                <ScalarProperty Name="Aid" ColumnName="Aid" />
+                <ScalarProperty Name="Modifieddate" ColumnName="Modifieddate" />
+                <ScalarProperty Name="Creteddate" ColumnName="Creteddate" />
+                <ScalarProperty Name="Modifiedby" ColumnName="Modifiedby" />
+                <ScalarProperty Name="Cretedby" ColumnName="Cretedby" />
+                <ScalarProperty Name="DocumentUpload" ColumnName="DocumentUpload" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Purpose" ColumnName="Purpose" />
+                <ScalarProperty Name="AppointmentEndDate" ColumnName="AppointmentEndDate" />
+                <ScalarProperty Name="AppointmentStartDate" ColumnName="AppointmentStartDate" />
+                <ScalarProperty Name="RefDid" ColumnName="RefDid" />
+                <ScalarProperty Name="RefPid" ColumnName="RefPid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

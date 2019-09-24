@@ -1,0 +1,15 @@
+﻿
+@if (TempData["err"] != null)
+{
+    <div class="alert alert-danger alert-dismissible">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Error:</strong> @TempData["err"].ToString()
+    </div>
+}
+else if (TempData["msg"] != null)
+{
+    <div class="alert alert-success alert-dismissible">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Message:</strong>@TempData["msg"].ToString()
+    </div>
+}

@@ -1,0 +1,113 @@
+﻿@model PatientManageSystem.Models.StaffManage
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Admin.cshtml";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>StaffManage</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.StaffName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.StaffName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.StaffPassword)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.StaffPassword)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.StaffEmail)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.StaffEmail)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.StaffContactNumber)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.StaffContactNumber)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.StaffDesignation)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.StaffDesignation)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.StaffExperience)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.StaffExperience)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.IsActive)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Cretedby)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Cretedby)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Modifiedby)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Modifiedby)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Creteddate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Creteddate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Modifieddate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Modifieddate)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.StaffId }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

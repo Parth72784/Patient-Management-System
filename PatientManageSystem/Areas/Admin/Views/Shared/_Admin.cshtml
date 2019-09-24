@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Fav  Icon Link -->
+    <link rel="shortcut icon" type="image/png" href="~/Content/Admin/images/fav.png">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="~/Content/Admin/css/bootstrap.min.css">
+    <!-- themify icons CSS -->
+    <link rel="stylesheet" href="~/Content/Admin/css/themify-icons.css">
+    <!-- Animations CSS -->
+    <link rel="stylesheet" href="~/Content/Admin/css/animate.css">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="~/Content/Admin/css/styles.css">
+    <link rel="stylesheet" href="~/Content/Admin/css/green.css" id="style_theme">
+    <link rel="stylesheet" href="~/Content/Admin/css/responsive.css">
+    <!-- morris charts -->
+    <link rel="stylesheet" href="~/Content/Admin/charts/css/morris.css">
+    <!-- jvectormap -->
+    <link rel="stylesheet" href="~/Content/Admin/css/jquery-jvectormap.css">
+
+    <script src="~/Content/Admin/js/modernizr.min.js"></script>
+    <!-- Jquery Library-->
+    <script src="~/Content/Admin/js/jquery-3.2.1.min.js"></script>
+    <!-- Popper Library-->
+    <script src="~/Content/Admin/js/popper.min.js"></script>
+    <!-- Bootstrap Library-->
+    <script src="~/Content/Admin/js/bootstrap.min.js"></script>
+    <!-- morris charts -->
+    <script src="~/Content/Admin/charts/js/raphael-min.js"></script>
+    <script src="~/Content/Admin/charts/js/morris.min.js"></script>
+    <script src="~/Content/Admin/js/custom-morris.js"></script>
+
+    <!-- Custom Script-->
+    <script src="~/Content/Admin/js/custom.js"></script>
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Page Content -->
+        <div id="content">
+            <!-- Top Navigation -->
+            <div class="container top-brand">
+                <nav class="navbar navbar-default">
+                    <div class="navbar-header">
+                        <div class="sidebar-header">
+                            <a href="~/Content/Admin/index-2.html"><img src="~/Content/Admin/images/logo-dark.png" class="logo" alt="logo"></a>
+                        </div>
+                    </div>
+                    <ul class="nav justify-content-end">
+
+                        <li class="nav-item">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="~/Content/Admin/#" role="button" aria-haspopup="true"
+                               aria-expanded="false">
+                                <span class="ti-user"></span>
+                            </a>
+                            <div class="dropdown-menu proclinic-box-shadow2 profile animated flipInY">
+                                <h5>@Session["AdminName"]</h5>
+
+                                <a class="dropdown-item" href="#">
+                                    <span class="ti-help-alt"></span> Help
+                                </a>
+                                <a class="dropdown-item" href="@Url.Action("Logout","Dashboard")">
+                                    <span class="ti-power-off"></span> Logout
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+
+                </nav>
+            </div>
+            <!-- /Top Navigation -->
+            <!-- Menu -->
+            <div class="container menu-nav">
+                <nav class="navbar navbar-expand-lg proclinic-bg text-white">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="ti-menu text-white"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" href="@Url.Action("Index","Dashboard")" role="button" aria-haspopup="true"
+                                   aria-expanded="false"><span class="ti-home"></span> Dashboard</a>
+
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="~/Content/Admin/#" role="button" aria-haspopup="true"
+                                   aria-expanded="false"><span class="ti-wheelchair"></span> Patients</a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="@Url.Action("Create","PatientManages")">Add Patient</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index","PatientManages")">All Patients</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="~/Content/Admin/#" role="button" aria-haspopup="true"
+                                   aria-expanded="false"><span class="ti-wheelchair"></span> Staff</a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="@Url.Action("Create","StaffManages")">Add Staff</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index","StaffManages")">All Staff</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="~/Content/Admin/#" role="button" aria-haspopup="true"
+                                   aria-expanded="false"><span class="ti-user"></span> Doctors</a>
+                                <div class="dropdown-menu">
+
+                                    <a class="dropdown-item" href="@Url.Action("Create","DoctorManages")">Add Doctor</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index","DoctorManages")">All Doctors</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="~/Content/Admin/#" role="button" aria-haspopup="true"
+                                   aria-expanded="false"><span class="ti-pencil-alt"></span> Appointments</a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="@Url.Action("Create","AppointmentManages")">Add Appointment</a>
+                                    <a class="dropdown-item" href="@Url.Action("Index","AppointmentManages")">All Appointments</a>
+                                </div>
+                            </li>
+
+
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <!-- /Menu -->
+            <!-- Breadcrumb -->
+            <div>
+                @Html.Partial("_ShowMessage")
+                @RenderBody()
+            </div>
+            <!--Copy Rights-->
+            <div class="container">
+                <div class="d-sm-flex justify-content-center">
+                    <span class="text-muted text-center d-block d-sm-inline-block">Copyright © 2019 PMS. All rights reserved.</span>
+                </div>
+            </div>
+            <!-- /Copy Rights-->
+        </div>
+        <!-- /Page Content -->
+    </div>
+
+    <!-- Back to Top -->
+    <a id="back-to-top" href="~/Content/Admin/#" class="back-to-top">
+        <span class="ti-angle-up"></span>
+    </a>
+    <!-- /Back to Top -->
+</body>
+</html>

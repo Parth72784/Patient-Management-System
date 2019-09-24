@@ -1,0 +1,136 @@
+﻿@model PatientManageSystem.Models.AppointmentManage
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Admin.cshtml";
+}
+
+    <div class="container mt-0">
+        <div class="row breadcrumb-bar">
+            <div class="col-md-6">
+                <h3 class="block-title">Delete Appointment</h3>
+            </div>
+            <div class="col-md-6">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="index-2.html">
+                            <span class="ti-home"></span>
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item">Appoinments</li>
+                    <li class="breadcrumb-item active">Delete Appointment</li>
+                </ol>
+            </div>
+        </div>
+        
+
+            <h3>Are you sure you want to delete this?</h3>
+
+            <div class="module">
+                <div class="module-body">
+                    <div>
+
+                        <dl class="dl-horizontal">
+                            <dt>
+                                A.S.Date
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.AppointmentStartDate)
+                            </dd>
+
+                            <dt>
+                                A.E.Date
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.AppointmentEndDate)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Purpose)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Purpose)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Status)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Status)
+                            </dd>
+
+                            <dt>
+                                DOC
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.DocumentUpload)
+                            </dd>
+
+                            <dt>
+                                C By
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Cretedby)
+                            </dd>
+
+                            <dt>
+                                M By
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Modifiedby)
+                            </dd>
+
+                            <dt>
+                                C Date
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Creteddate)
+                            </dd>
+
+                            <dt>
+                                M Date
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Modifieddate)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.DoctorManage.DrName)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.DoctorManage.DrName)
+                            </dd>
+
+                            <dt>
+                                Patient Name
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.PatientManage.Pname)
+                            </dd>
+
+                        </dl>
+
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div class="form-actions no-color">
+                                <input type="submit" value="Delete" class="btn btn-default" /> |
+                                @Html.ActionLink("Index", "Index")
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+
+        </div>

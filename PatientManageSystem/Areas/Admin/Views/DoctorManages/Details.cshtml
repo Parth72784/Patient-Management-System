@@ -1,0 +1,135 @@
+﻿@model PatientManageSystem.Models.DoctorManage
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Admin.cshtml";
+}
+
+    <div class="container mt-0">
+        <div class="row breadcrumb-bar">
+            <div class="col-md-6">
+                <h3 class="block-title">Details Doctor</h3>
+            </div>
+            <div class="col-md-6">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="index-2.html">
+                            <span class="ti-home"></span>
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item">Doctor</li>
+                    <li class="breadcrumb-item active">Details Doctor</li>
+                </ol>
+            </div>
+        </div>
+
+        <div>
+
+            <div class="module">
+                <div class="module-body">
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.DrName)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.DrName)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.DrPassword)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.DrPassword)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Specialzaition)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Specialzaition)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.DrEmail)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.DrEmail)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.DrContactNumber)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.DrContactNumber)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.DrExperience)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.DrExperience)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.DrGender)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.DrGender)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.IsActive)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.IsActive)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Cretedby)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Cretedby)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Modifiedby)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Modifiedby)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Creteddate)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Creteddate)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Modifieddate)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Modifieddate)
+                        </dd>
+
+                    </dl>
+                </div>
+            </div>
+        </div>
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.DrId }) |
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+    </div>

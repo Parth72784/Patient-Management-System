@@ -1,0 +1,104 @@
+﻿@model IEnumerable<PatientManageSystem.Models.StaffManage>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/User/Views/Shared/_User.cshtml";
+}
+
+    <div class="container mt-0">
+        <div class="row breadcrumb-bar">
+            <div class="col-md-6">
+                <h3 class="block-title">Index Staff</h3>
+            </div>
+            <div class="col-md-6">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="index-2.html">
+                            <span class="ti-home"></span>
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item">Staff</li>
+                    <li class="breadcrumb-item active">Index Staff</li>
+                </ol>
+            </div>
+        </div>
+
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.StaffName)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.StaffEmail)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StaffContactNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StaffDesignation)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StaffExperience)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IsActive)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cretedby)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Modifiedby)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Creteddate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Modifieddate)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StaffName)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StaffEmail)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StaffContactNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StaffDesignation)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StaffExperience)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsActive)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Cretedby)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Modifiedby)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Creteddate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Modifieddate)
+                    </td>
+
+                </tr>
+            }
+
+        </table>
+        </div>

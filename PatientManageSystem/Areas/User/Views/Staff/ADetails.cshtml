@@ -1,0 +1,125 @@
+﻿@model PatientManageSystem.Models.AppointmentManage
+
+@{
+    ViewBag.Title = "ADetails";
+    Layout = "~/Areas/User/Views/Shared/_User.cshtml";
+}
+
+    <div class="container mt-0">
+        <div class="row breadcrumb-bar">
+            <div class="col-md-6">
+                <h3 class="block-title">Details Appointment</h3>
+            </div>
+            <div class="col-md-6">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="index-2.html">
+                            <span class="ti-home"></span>
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item">Appoinments</li>
+                    <li class="breadcrumb-item active">Details Appointment</li>
+                </ol>
+            </div>
+        </div>
+        <div>
+
+            <div>
+
+                <dl class="dl-horizontal">
+                    <dt>
+                        A.S. Date
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.AppointmentStartDate)
+                    </dd>
+
+                    <dt>
+                        A.E. Date
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.AppointmentEndDate)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Purpose)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Purpose)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Status)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Status)
+                    </dd>
+
+                    <dt>
+                        DOC
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.DocumentUpload)
+                    </dd>
+
+                    <dt>
+                        C By
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Cretedby)
+                    </dd>
+
+                    <dt>
+                        M By
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Modifiedby)
+                    </dd>
+
+                    <dt>
+                        C Date
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Creteddate)
+                    </dd>
+
+                    <dt>
+                        M Date
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Modifieddate)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.DoctorManage.DrName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.DoctorManage.DrName)
+                    </dd>
+
+                    <dt>
+                        Patient Name
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.PatientManage.Pname)
+                    </dd>
+
+                </dl>
+            </div>
+            <p>
+                @Html.ActionLink("Edit", "AEdit", new { id = Model.Aid }) |
+                @Html.ActionLink("Back to List", "AIndex")
+            </p>
+        </div>
+    </div>
