@@ -54,7 +54,7 @@
                                 <div class="form-group row">
                                     <div class="col-sm-12">
                                         <input name="AdminName" id="AdminName" placeholder="Username" class="form-control" required="" data-validation="length alphanumeric" data-validation-length="3-12"
-                                               data-validation-error-msg="User name has to be an alphanumeric value (3-12 chars)" data-validation-has-keyup-event="true">
+                                              value="@ViewBag.AdminName" data-validation-error-msg="User name has to be an alphanumeric value (3-12 chars)" data-validation-has-keyup-event="true">
                                     </div>
                                 </div>
                                 <!-- /.form-group -->
@@ -62,7 +62,7 @@
                                 <div class="form-group row">
                                     <div class="col-sm-12">
                                         <input type="Password" id="AdminPassword" placeholder="Password" name="AdminPassword" class="form-control" data-validation="strength" data-validation-strength="2"
-                                               data-validation-has-keyup-event="true"value="@ViewBag.Password">
+                                               data-validation-has-keyup-event="true"value="@ViewBag.AdminPassword">
                                     </div>
                                 </div>
                                 <!-- /.form-group -->
@@ -70,7 +70,7 @@
                                 <div class="form-check row">
                                     <div class="col-sm-12 text-left">
                                         <div class="custom-control custom-checkbox">
-                                            <input class="custom-control-input" type="checkbox" id="isRemember" value="false" name="isRemember">
+                                            <input class="custom-control-input" type="checkbox" id="isRemember" value="True" name="isRemember">
                                             <label class="custom-control-label" for="isRemember">Remember Me</label>
                                         </div>
                                     </div>

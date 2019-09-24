@@ -16,8 +16,8 @@ namespace PatientManageSystem.Areas.Admin.Controllers
             if (Request.Cookies["userDetails"] != null)
             {
                 HttpCookie cok = Request.Cookies["userDetails"];
-                ViewBag.Password = cok.Values["password"].ToString();
-                ViewBag.UserName = cok.Values["username"].ToString();
+                ViewBag.AdminPassword = cok.Values["password"].ToString();
+                ViewBag.AdminName = cok.Values["username"].ToString();
             }
 
             return View();
@@ -28,13 +28,10 @@ namespace PatientManageSystem.Areas.Admin.Controllers
             try
             {
                 var login = db.SuperAdmins.SingleOrDefault(a => a.AdminName == Logindata.AdminName && a.AdminPassword == Logindata.AdminPassword);
-                if (login == null)
-                {
-                    ViewBag.err = "Invalid Details";
-                }
 
+                Logindata.isRemember = true;
                
-                else if (login != null)
+                if (login != null)
                 {
                     if (Logindata.isRemember)
                     {
