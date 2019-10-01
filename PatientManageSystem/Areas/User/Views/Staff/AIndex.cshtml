@@ -5,7 +5,7 @@
     Layout = "~/Areas/User/Views/Shared/_User.cshtml";
 }
 
-<h2>Index</h2>
+
 <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="/resources/demos/style.css">
@@ -53,11 +53,7 @@
             </div>
 
         </form>
-        @using (Html.BeginForm("Export", "Staff", FormMethod.Post))
-        {
-            <input type="hidden" name="GridHtml" />
-            <input type="submit" id="btnSubmit" value="Export" />
-        }
+     
         <script type="text/javascript">
             $(function () {
                 $("#btnSubmit").click(function () {
@@ -65,9 +61,7 @@
                 });
             });
         </script>
-        <p>
-            @Html.ActionLink("Create New", "PCreate")
-        </p>
+      
         <div id="Grid">
             <table class="table">
                 <tr>
@@ -150,13 +144,18 @@
                         </td>
                         <td>
                             @Html.ActionLink("Edit", "AEdit", new { id = item.Aid }) |
-                            @Html.ActionLink("Details", "ADetails", new { id = item.Aid }) 
-                    
+                            @Html.ActionLink("Details", "ADetails", new { id = item.Aid })
+
                         </td>
                     </tr>
                 }
 
             </table>
+            @using (Html.BeginForm("Export", "Staff", FormMethod.Post))
+            {
+                <input type="hidden" name="GridHtml" />
+                <input type="submit" id="btnSubmit" value="Export" />
+            }
         </div>
     </div>
 </div>

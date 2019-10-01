@@ -15,8 +15,8 @@ namespace PatientManageSystem
 
             routes.MapRoute(
                 name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                url: "{Area}/{controller}/{action}/{id}",
+                defaults: new { Area = "User", controller = "Index", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

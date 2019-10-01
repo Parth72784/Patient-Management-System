@@ -1,11 +1,11 @@
-﻿@model IEnumerable<PatientManageSystem.Models.AppointmentManage>
+﻿    @model IEnumerable<PatientManageSystem.Models.AppointmentManage>
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Admin.cshtml";
 }
 
-<h2>Index</h2>
+
 <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="/resources/demos/style.css">
@@ -65,9 +65,7 @@
                 });
             });
         </script>
-        <p>
-            @Html.ActionLink("Create New", "Create")
-        </p>
+       
         <div id="Grid">
             <table class="table">
                 <tr>

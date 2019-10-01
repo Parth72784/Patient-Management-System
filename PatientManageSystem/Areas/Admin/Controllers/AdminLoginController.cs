@@ -29,7 +29,7 @@ namespace PatientManageSystem.Areas.Admin.Controllers
             {
                 var login = db.SuperAdmins.SingleOrDefault(a => a.AdminName == Logindata.AdminName && a.AdminPassword == Logindata.AdminPassword);
 
-                Logindata.isRemember = true;
+               // Logindata.isRemember = true;
                
                 if (login != null)
                 {

@@ -276,6 +276,7 @@
     <Content Include="Content\Admin\js\jquery.vmap.usa.js" />
     <Content Include="Content\Admin\js\modernizr.min.js" />
     <Content Include="Content\Admin\js\popper.min.js" />
+    <Content Include="Content\Admin\patient-management-system-asp-net.jpg" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
